@@ -16,6 +16,10 @@ namespace AgendaClean.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            if (Session["userLogged"] != null)
+            {
+                return RedirectToAction("Index", "Contact");
+            }
             return View();
         }
 
@@ -36,7 +40,8 @@ namespace AgendaClean.Controllers
                 Password = Crypto.HashPassword(password)
             };
             _rep.Add(user);
-            return View();
+            Session["userLogged"] = user;
+            return RedirectToAction("Index", "Contact");
             
         }
 
@@ -54,7 +59,8 @@ namespace AgendaClean.Controllers
                 var userFound = userMatched.FirstOrDefault();
                 if (Crypto.VerifyHashedPassword(userFound.Password, password))
                 {
-                    return RedirectToAction("Index", "Contacts");
+                    Session["userLogged"] = userFound;
+                    return RedirectToAction("Index", "Contact");
                 }
                 else
                 {
@@ -67,10 +73,5 @@ namespace AgendaClean.Controllers
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            _rep.Dispose();
-        }
     }
 }

@@ -32,6 +32,10 @@ namespace AgendaClean
             bundles.Add(new StyleBundle("~/Content/login").Include(
                       "~/Content/login.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/Content/contacts").Include(
+                      "~/Content/contacts.css"
+                ));
         }
     }
 }

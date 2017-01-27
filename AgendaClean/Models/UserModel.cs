@@ -19,7 +19,7 @@ namespace AgendaClean.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public ICollection<ContactModel> Contacts { get; set; }
+        public virtual ICollection<ContactModel> Contacts { get; set; }
 
         public UserModel()
         {

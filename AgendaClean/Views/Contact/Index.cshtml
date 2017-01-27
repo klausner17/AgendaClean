@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<AgendaClean.Models.ContactModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/contacts")
+
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Agenda Clean</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Jack Gleeson">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">procurar</button>
+                        </span>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="navbar-form">
+                            <a href="" type="submit" class="btn btn-info" role="button">novo contato</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="navbar-form">
+                            <a href="" type="submit" class="btn btn-danger" role="button">sair</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Telefone
+
+                </th>
+                <th>
+                   E-mail
+                </th>
+            </tr>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>@contact.Name</td>
+                    <td>@contact.Phone</td>
+                    <td>@contact.Email</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -20,15 +20,24 @@ namespace AgendaClean.Controllers
         }
 
         //POST: Register
-        public void Register(string login, string password)
+        public ActionResult Register(string login, string password, string confirmPassword)
         {
             password = Crypto.HashPassword(password);
+            if (_rep.FindAll().Any(m => m.Login.Equals(login)))
+            {
+                return RedirectToAction("Login", "Login", new { @error = "Este login já está cadastrado. Por favor, tente outro login." });
+            }
+            if (!password.Equals(confirmPassword))
+            {
+                return RedirectToAction("Login", "Login", new { @error = "A confirmação da senha não corresponde com a senha digitada." });
+            }
             UserModel user = new UserModel()
             {
                 Login = login,
                 Password = password
             };
             _rep.Add(user);
+            return View();
             
         }
     }

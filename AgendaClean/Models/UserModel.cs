@@ -23,7 +23,7 @@ namespace AgendaClean.Models
 
         public UserModel()
         {
-            Id = new Guid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

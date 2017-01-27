@@ -25,13 +25,13 @@ namespace AgendaClean.Controllers
             password = Crypto.HashPassword(password);
             if (_rep.FindAll().Any(m => m.Login.Equals(login)))
             {
-                return RedirectToAction("Login", "Login", new { @error = "Este login já está cadastrado. Por favor, tente outro login." });
+                return RedirectToAction("Login", new { @error = "Este login já está cadastrado. Por favor, tente outro login." });
             }
             if (!password.Equals(confirmPassword))
             {
-                return RedirectToAction("Login", "Login", new { @error = "A confirmação da senha não corresponde com a senha digitada." });
+                return RedirectToAction("Login", new { @error = "A confirmação da senha não corresponde com a senha digitada." });
             }
-            UserModel user = new UserModel()
+            var user = new UserModel()
             {
                 Login = login,
                 Password = password

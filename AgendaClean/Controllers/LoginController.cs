@@ -22,7 +22,6 @@ namespace AgendaClean.Controllers
         //POST: Register
         public ActionResult Register(string login, string password, string confirmPassword)
         {
-            password = Crypto.HashPassword(password);
             if (_rep.FindAll().Any(m => m.Login.Equals(login)))
             {
                 return RedirectToAction("Login", new { @error = "Este login já está cadastrado. Por favor, tente outro login." });
@@ -34,11 +33,44 @@ namespace AgendaClean.Controllers
             var user = new UserModel()
             {
                 Login = login,
-                Password = password
+                Password = Crypto.HashPassword(password)
             };
             _rep.Add(user);
             return View();
             
+        }
+
+        //POST: ConfirmLogin
+        public ActionResult ConfirmLogin(string login, string password)
+        {
+            var userReqLogin = new UserModel()
+            {
+                Login = login,
+                Password = password
+            };
+            var userMatched = _rep.FindAll().Where(m => m.Login == login);
+            if (userMatched.Any())
+            {
+                var userFound = userMatched.FirstOrDefault();
+                if (Crypto.VerifyHashedPassword(userFound.Password, password))
+                {
+                    return RedirectToAction("Index", "Contacts");
+                }
+                else
+                {
+                    return RedirectToAction("Login", new { @error = "Senha inválida." });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", new { @error = "Usuário não encontrado." });
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            _rep.Dispose();
         }
     }
 }

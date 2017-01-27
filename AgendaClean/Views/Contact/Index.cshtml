@@ -7,6 +7,69 @@
 
 @Styles.Render("~/Content/contacts")
 
+<div class="modal fade" id="modalNewContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    @using (Html.BeginForm("ConfirmNew", "Contact", FormMethod.Post))
+    {
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Novo contato</h4>
+            </div>
+          <div class="modal-body">
+                    <div class="form-group row">
+                        
+                        <label for="name" class="col-sm-2 col-form-label">Nome</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" placeholder="Davi Bezerra" id="name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label for="phone" class="col-sm-2 col-form-label">Telefone</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="tel" id="phone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label for="birthdate" class="col-sm-2 col-form-label">Data de nasc.</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" id="birthdate">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="address" class="col-sm-2 col-form-label">Endereço</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="email" id="addres">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                        </div>
+                    </div>
+                    
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">salvar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">cancelar</button>
+            </div>
+        </div>
+    }
+    </div>
+</div>
+
+
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -34,12 +97,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div class="navbar-form">
-                            <a href="" type="submit" class="btn btn-info" role="button">novo contato</a>
+                            <a href="#" data-toggle="modal" data-target="#modalNewContact" class="btn btn-info" role="button">novo contato</a>
                         </div>
                     </li>
                     <li>
                         <div class="navbar-form">
-                            <a href="" type="submit" class="btn btn-danger" role="button">sair</a>
+                            <a href="@Url.Action("CloseSession")" type="submit" class="btn btn-danger" role="button">sair</a>
                         </div>
                     </li>
                 </ul>
@@ -48,27 +111,29 @@
     </nav>
 
     <div class="row">
-        <table class="table">
-            <tr>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Telefone
-
-                </th>
-                <th>
-                   E-mail
-                </th>
-            </tr>
-            @foreach (var contact in Model)
-            {
+        @if (Model.Any())
+        {
+            <table class="table">
                 <tr>
-                    <td>@contact.Name</td>
-                    <td>@contact.Phone</td>
-                    <td>@contact.Email</td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name);
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone);
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email);
+                    </th>
                 </tr>
-            }
-        </table>
+                @foreach (var contact in Model)
+                {
+                    <tr>
+                        <td>@contact.Name</td>
+                        <td>@contact.Phone</td>
+                        <td>@contact.Email</td>
+                    </tr>
+                }
+            </table>
+        }
     </div>
 </div>

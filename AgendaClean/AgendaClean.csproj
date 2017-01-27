@@ -168,6 +168,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\contacts.css" />
+    <Content Include="Content\Images\notepad.png" />
     <Content Include="Content\login.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

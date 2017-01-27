@@ -1,4 +1,5 @@
-﻿using AgendaClean.Models;
+﻿using Agenda.Controllers;
+using AgendaClean.Models;
 using AgendaClean.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace AgendaClean.Controllers
         {
             if (Session["userLogged"] != null)
             {
-                return RedirectToAction("Index", "Contact");
+                return RedirectToAction(nameof(ContactController.Index), "Contact");
             }
             return View();
         }
@@ -28,11 +29,11 @@ namespace AgendaClean.Controllers
         {
             if (_rep.FindAll().Any(m => m.Login.Equals(login)))
             {
-                return RedirectToAction("Login", new { @error = "Este login já está cadastrado. Por favor, tente outro login." });
+                return RedirectToAction(nameof(Login), new { @error = "Este login já está cadastrado. Por favor, tente outro login." });
             }
             if (!password.Equals(confirmPassword))
             {
-                return RedirectToAction("Login", new { @error = "A confirmação da senha não corresponde com a senha digitada." });
+                return RedirectToAction(nameof(Login), new { @error = "A confirmação da senha não corresponde com a senha digitada." });
             }
             var user = new UserModel()
             {
@@ -41,7 +42,7 @@ namespace AgendaClean.Controllers
             };
             _rep.Add(user);
             Session["userLogged"] = user;
-            return RedirectToAction("Index", "Contact");
+            return RedirectToAction(nameof(ContactController.Index), nameof(ContactController));
             
         }
 
@@ -60,16 +61,17 @@ namespace AgendaClean.Controllers
                 if (Crypto.VerifyHashedPassword(userFound.Password, password))
                 {
                     Session["userLogged"] = userFound;
-                    return RedirectToAction("Index", "Contact");
+                    return RedirectToAction(nameof(ContactController.Index), "Contact");
+
                 }
                 else
                 {
-                    return RedirectToAction("Login", new { @error = "Senha inválida." });
+                    return RedirectToAction(nameof(Login), new { @error = "Senha inválida." });
                 }
             }
             else
             {
-                return RedirectToAction("Login", new { @error = "Usuário não encontrado." });
+                return RedirectToAction(nameof(Login), new { @error = "Usuário não encontrado." });
             }
         }
 

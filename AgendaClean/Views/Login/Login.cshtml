@@ -2,91 +2,95 @@
 @using AgendaClean.Models
 @model UserModel
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Login";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Styles.Render("~/Content/login")
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-login">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-login">
 
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="active" id="login-form-link">Login</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#" id="register-form-link">Cadastro</a>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-6">
+							<a href="#" class="active" id="login-form-link">Login</a>
+						</div>
+						<div class="col-xs-6">
+							<a href="#" id="register-form-link">Cadastro</a>
+						</div>
+					</div>
+					<hr>
+				</div>
 
-                <div class="panel-body">
-                    <div class="row">
-                        @if (Request.QueryString["error"] != null && Request.Params["error"].Count() > 0)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                <strong>@Request.Params["error"]</strong>
-                            </div>
-                        }
-                        <div class="col-lg-12">
-                            @using (Html.BeginForm("ConfirmLogin", "Login", FormMethod.Post, new { @id = "login-form", @role = "form", @style = "display: block" }))
+				<div class="panel-body">
+					<div class="row">
+						@if (Request.QueryString["error"] != null && Request.Params["error"].Count() > 0)
+						{
+							<div class="alert alert-danger" role="alert">
+								<strong>@Request.Params["error"]</strong>
+							</div>
+						}
+						<div class="col-lg-12">
+							@using (Html.BeginForm("ConfirmLogin", "Login", FormMethod.Post, new { @id = "login-form", @role = "form", @style = "display: block" }))
+							{
+								<div class="col-lg-8 col-lg-offset-2">
+									<div class="form-group ">
+										@Html.LabelFor(Model => Model.Login, new { style = "form-control" })
+										@Html.TextBoxFor(Model => Model.Login, new { @name = "username", @id = "username", @tabindex = "1", @class = "form-control", @placeholder = "fernando25", @required = "true" })
+									</div>
+									<div class="form-group">
+										@Html.LabelFor(Model => Model.Password, new { style = "form-control" })
+										@Html.PasswordFor(Model => Model.Password, new { @name = "password", @id = "password", @tabindex = "2", @class = "form-control", @placeholder = "******", @required = "true" })
+									</div>
+									<div class="form-group text-center">
+										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+										<label for="remember"> Lembre-me! </label>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Entrar">
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+							@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @id = "register-form", @role = "form", @style = "display: none" }))
                             {
-                                <div class="form-group ">
-                                    @Html.LabelFor(Model => Model.Login, new { style = "form-control" })
-                                    @Html.TextBoxFor(Model => Model.Login, new { @name = "username", @id = "username", @tabindex = "1", @class = "form-control", @placeholder = "jose@agenda.com" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(Model => Model.Password, new { style = "form-control" })
-                                    @Html.PasswordFor(Model => Model.Password, new { @name = "password", @id = "password", @tabindex = "2", @class = "form-control", @placeholder = "******" })
-                                </div>
-                                <div class="form-group text-center">
-                                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                    <label for="remember"> Lembre-me! </label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Entrar">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="form-group">
+                                        @Html.LabelFor(Model => Model.Login, new { style = "form-control" })
+                                        @Html.TextBoxFor(Model => Model.Login, new { @name = "username", @id = "username", @tabindex = "1", @class = "form-control", @placeholder = "nome do usuário", @value = "", @required = "true" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(Model => Model.Password, new { style = "form-control" })
+                                        @Html.PasswordFor(Model => Model.Password, new { @name = "password", @id = "confirm-password", @tabindex = "2", @class = "form-control", @placeholder = "******", @required = "true" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Confirme a senha", new { style = "form-control" })
+                                        @Html.Password("confirmPassword", "", new { @id = "confirm-password", @tabindex = "2", @class = "form-control", @placeholder = "******", @required = "true" })
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Finalizar">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             }
-                            @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @id = "register-form", @role = "form", @style = "display: none" }))
-                            {
-                                <div class="form-group">
-                                    @Html.LabelFor(Model => Model.Login, new { style = "form-control" })
-                                    @Html.TextBoxFor(Model => Model.Login, new { @name = "username", @id = "username", @tabindex = "1", @class = "form-control", @placeholder = "nome do usuário", @value = "", @required="true" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(Model => Model.Password, new { style = "form-control" })
-                                    @Html.PasswordFor(Model => Model.Password, new { @name = "password", @id = "confirm-password", @tabindex = "2", @class = "form-control", @placeholder = "******", @required="true"})
-                                </div>
-                                <div class="form-group">
-                                    @Html.Label("Confirme a senha", new { style = "form-control" })
-                                    @Html.Password("confirmPassword", "", new { @id = "confirm-password", @tabindex = "2", @class = "form-control", @placeholder = "******", @required = "true" })
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Finalizar">
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/login")
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/login")
 }
 

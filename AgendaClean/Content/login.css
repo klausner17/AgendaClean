@@ -25,9 +25,11 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
 .panel-login>.panel-heading a.active
 {
-    color: #029f5b;
+    color: #59B2E0;
 	font-size: 18px;
 }
+
+
 .panel-login>.panel-heading hr
 {
     margin-top: 10px;

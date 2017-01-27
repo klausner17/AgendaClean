@@ -16,7 +16,13 @@ namespace Agenda.Controllers
         public ActionResult Index()
         {
             var user = Session["userLogged"] as UserModel;
-            return View(user.Contacts.ToList());
+            return View(user.Contacts.ToList() ?? new List<ContactModel>());
+        }
+
+        public ActionResult CloseSession()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Login");
         }
     }
 }

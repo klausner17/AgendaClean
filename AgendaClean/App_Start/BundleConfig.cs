@@ -20,6 +20,9 @@ namespace AgendaClean
             bundles.Add(new ScriptBundle("~/bundles/contact").Include(
                         "~/Scripts/contact.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/makedinput").Include(
+                       "~/Scripts/jquery.maskedinput.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-route.js"));

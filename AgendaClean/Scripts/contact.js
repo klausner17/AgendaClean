@@ -1,3 +1,7 @@
 ﻿$(document).ready(function () {
-    $('phone').mask('(00) 0000-0000');
+    $('input[name=phone]').mask('(99) 9999-9999');
+});
+
+$(document).ready(function () {
+    $('input[name=birthdate]').mask('99/99/9999');
 });

@@ -94,19 +94,19 @@
                     <div class="form-group row">
                         <label for="name" class="col-lg-2 col-form-label">Nome</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Name" class="form-control" type="text" placeholder="novo nome" id="name">
+                            <input ng-model="contactAdd.Name" class="form-control" type="text" placeholder="novo nome">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="phone" class="col-lg-2 col-form-label">Telefone</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Phone" class="form-control" type="tel" placeholder="novo telefone" name="phone" id="phone">
+                            <input ng-model="contactAdd.Phone" class="form-control" type="tel" placeholder="novo telefone" name="phone">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="birthdate" class="col-lg-2 col-form-label">Data de nasc.</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Birthdate" class="form-control" type="date" placeholder="nova data" id="birthdate">
+                            <input ng-model="contactAdd.Birthdate" class="form-control" type="date" placeholder="nova data" name="birthdate">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -148,31 +148,31 @@
                     <div class="form-group row">
                         <label for="name" class="col-lg-2 col-form-label">Nome</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactEdit.Name" class="form-control" type="text" placeholder="novo nome" id="name">
+                            <input ng-model="contactEdit.Name" class="form-control" type="text" placeholder="novo nome" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="phone" class="col-lg-2 col-form-label">Telefone</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactEdit.Phone" class="form-control" type="tel" placeholder="novo telefone" name="phone" id="phone">
+                            <input ng-model="contactEdit.Phone" class="form-control" type="tel" placeholder="novo telefone" name="phone" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="birthdate" class="col-lg-2 col-form-label">Data de nasc.</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactEdit.Birthdate" class="form-control" type="date placeholder="nova data" id="birthdate">
+                            <input ng-model="contactEdit.Birthdate" class="form-control" type="date" placeholder="nova data" name="birthdate" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-lg-2 col-form-label">E-mail</label>
                         <div class="col-lg-10">
-                            <input class="form-control" ng-model="contactEdit.Email" type="text" placeholder="novo email" id="email">
+                            <input class="form-control" ng-model="contactEdit.Email" type="text" placeholder="novo email" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="address" class="col-lg-2 col-form-label">Endereço</label>
                         <div class="col-lg-10">
-                            <input class="form-control" ng-model="contactEdit.Address" type="text" placeholder="novo endereço" id="address">
+                            <input class="form-control" ng-model="contactEdit.Address" type="text" placeholder="novo endereço" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -193,6 +193,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/makedinput")
     @Scripts.Render("~/bundles/contact")
 }
 

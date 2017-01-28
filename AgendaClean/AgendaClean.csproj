@@ -194,6 +194,8 @@
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -42,7 +42,7 @@ namespace AgendaClean.Controllers
             };
             _rep.Add(user);
             Session["userLogged"] = user;
-            return RedirectToAction(nameof(ContactController.Index), nameof(ContactController));
+            return RedirectToAction(nameof(ContactController.Index), "Controller");
             
         }
 

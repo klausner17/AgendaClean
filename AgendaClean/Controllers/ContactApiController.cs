@@ -31,7 +31,7 @@ namespace Agenda.Controllers
 
         //GET api/<controller>/<action>/ec5b8058-e848-46a9-b60e-3bff26c8e90d
         [HttpGet]
-        public object GetByUserId(string id)
+        public HttpResponseMessage GetByUserId(string id)
         {
             try
             {
@@ -45,30 +45,36 @@ namespace Agenda.Controllers
             }
         }
         
-
         //PUT api/<controller>/<action>/produto
         [HttpPut]
-        public object Add([FromBody]ContactModel contact)
+        public HttpResponseMessage Add([FromBody]ContactModel contact)
         {
             try
             {
-                var _repContact = new ContactRepository();
-                _repContact.Add(contact);
-                return _repContact.FindAll();
+                var repContact = new ContactRepository();
+                repContact.Add(contact);
+                return Request.CreateResponse(HttpStatusCode.OK, repContact.FindAll());
             }
             catch (NullReferenceException)
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+        // DELETE api/<controller>/<action>/5
+        [HttpPut]
+        public HttpResponseMessage Delete([FromBody]ContactModel contact)
         {
+            try
+            {
+                var repContact = new ContactRepository();
+                repContact.Remove(repContact.Find(contact.Id));
+                return Request.CreateResponse(HttpStatusCode.OK, repContact.FindAll());
+            }
+            catch (NullReferenceException)
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
         }
     }
 }

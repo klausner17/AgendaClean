@@ -23,4 +23,15 @@ app.controller("contactsController", function ($scope, $http) {
             console.log(data);
         });
     }
+
+    //metodo para remover contato
+    $scope.DeleteContact = function ( contact ) {
+        $http.put('/api/contactapi/delete', contact)
+        .success(function (result) {
+            $scope.contacts = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+    }
 });

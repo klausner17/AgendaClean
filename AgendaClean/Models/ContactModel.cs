@@ -27,7 +27,6 @@ namespace AgendaClean.Models
         [Display(Name = "Telefone")]
         public string Phone { get; set; }
         
-        [JsonIgnore]
         public string UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]

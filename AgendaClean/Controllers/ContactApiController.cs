@@ -14,13 +14,14 @@ namespace Agenda.Controllers
     public class ContactApiController : ApiController
     {
         // GET api/<controller>/<action>/5
-        public object Get(string id)
+        [HttpGet]
+        public HttpResponseMessage Get(string id)
         {
             try
             {
                 var repContact = new ContactRepository();
                 var contact = repContact.Find(id);
-                return contact;
+                return Request.CreateResponse(HttpStatusCode.OK, contact);
             }
             catch(NullReferenceException)
             {
@@ -29,25 +30,37 @@ namespace Agenda.Controllers
         }
 
         //GET api/<controller>/<action>/ec5b8058-e848-46a9-b60e-3bff26c8e90d
+        [HttpGet]
         public object GetByUserId(string id)
         {
             try
             {
                 var repUser = new UserRepository();
                 var contacts = repUser.Find(id).Contacts;
-                return contacts;
+                return Request.CreateResponse(HttpStatusCode.OK, contacts);
             }
             catch (NullReferenceException)
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
+        
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        //PUT api/<controller>/<action>/produto
+        [HttpPut]
+        public object Add([FromBody]ContactModel contact)
         {
+            try
+            {
+                var _repContact = new ContactRepository();
+                _repContact.Add(contact);
+                return _repContact.FindAll();
+            }
+            catch (NullReferenceException)
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
         }
-
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)
         {

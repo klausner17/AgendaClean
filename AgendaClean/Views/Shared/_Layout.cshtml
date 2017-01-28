@@ -1,12 +1,13 @@
 ﻿
-<!DOCTYPE html ng-app="app">
-<html>
+<!DOCTYPE html>
+<html ng-app="agendaApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Agenda Clean</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/angular-locale_pt-br.js"></script>
 
 </head>
 <body>
@@ -16,6 +17,9 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    <script src="~/Scripts/app.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

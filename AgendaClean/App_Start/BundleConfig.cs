@@ -17,6 +17,10 @@ namespace AgendaClean
             bundles.Add(new ScriptBundle("~/bundles/login").Include(
                         "~/Scripts/login.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-route.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -30,12 +34,10 @@ namespace AgendaClean
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/login").Include(
-                      "~/Content/login.css"
-                ));
+                      "~/Content/login.css"));
 
             bundles.Add(new StyleBundle("~/Content/contacts").Include(
-                      "~/Content/contacts.css"
-                ));
+                      "~/Content/contacts.css"));
         }
     }
 }

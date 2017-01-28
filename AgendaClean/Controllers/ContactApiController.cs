@@ -61,6 +61,22 @@ namespace Agenda.Controllers
             }
         }
 
+        //PUT api/<controller>/<action>/produto
+        [HttpPut]
+        public HttpResponseMessage Edit([FromBody]ContactModel contact)
+        {
+            try
+            {
+                var repContact = new ContactRepository();
+                repContact.Update(contact);
+                return Request.CreateResponse(HttpStatusCode.OK, repContact.FindAll());
+            }
+            catch (NullReferenceException)
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
+        }
+
         // DELETE api/<controller>/<action>/5
         [HttpPut]
         public HttpResponseMessage Delete([FromBody]ContactModel contact)

@@ -17,6 +17,9 @@ namespace AgendaClean
             bundles.Add(new ScriptBundle("~/bundles/login").Include(
                         "~/Scripts/login.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/contact").Include(
+                        "~/Scripts/contact.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-route.js"));

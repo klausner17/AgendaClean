@@ -34,4 +34,35 @@ app.controller("contactsController", function ($scope, $http) {
             console.log(data);
         });
     }
+
+    //metodo para remover contato
+    $scope.DeleteContact = function (contact) {
+        $http.put('/api/contactapi/delete', contact)
+        .success(function (result) {
+            $scope.contacts = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+    }
+
+    $scope.InitEdit = function (contact) {
+        $scope.contactEdit.Name = contact.Name;
+        $scope.contactEdit.Phone = contact.Phone;
+        $scope.contactEdit.Birthdate = contact.Birthdate;
+        $scope.contactEdit.Email = contact.Email;
+        $scope.contactEdit.Address = contact.Address;
+        console.log("o caminhão de laranja passou por aqui? - Passou!" + contact.Name);
+    }
+
+    //metodo para editar contato
+    $scope.EditContact = function (contact) {
+        $http.put('/api/contactapi/edit', contact)
+        .success(function (result) {
+            $scope.contacts = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+    }
 });

@@ -19,7 +19,7 @@ namespace AgendaClean.Controllers
         {
             if (Session["userLogged"] != null)
             {
-                return RedirectToAction(nameof(ContactController.Index), "Contact");
+                return RedirectToAction(nameof(ContactControllerNop.Index), "Contact");
             }
             return View();
         }
@@ -42,7 +42,7 @@ namespace AgendaClean.Controllers
             };
             _rep.Add(user);
             Session["userLogged"] = user;
-            return RedirectToAction(nameof(ContactController.Index), "Controller");
+            return RedirectToAction(nameof(ContactControllerNop.Index), "Controller");
             
         }
 
@@ -61,7 +61,7 @@ namespace AgendaClean.Controllers
                 if (Crypto.VerifyHashedPassword(userFound.Password, password))
                 {
                     Session["userLogged"] = userFound;
-                    return RedirectToAction(nameof(ContactController.Index), "Contact");
+                    return RedirectToAction(nameof(ContactControllerNop.Index), "Contact");
 
                 }
                 else

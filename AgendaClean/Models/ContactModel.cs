@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,9 +27,11 @@ namespace AgendaClean.Models
         [Display(Name = "Telefone")]
         public string Phone { get; set; }
         
+        [JsonIgnore]
         public string UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
+        [JsonIgnore]
         public UserModel User { get; set; }
 
         public ContactModel()

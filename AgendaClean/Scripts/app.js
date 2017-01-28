@@ -6,6 +6,8 @@ app.controller("contactsController", function ($scope, $http) {
     $http.get('/api/Contactapi/getbyuserid/ec5b8058-e848-46a9-b60e-3bff26c8e90d')
     .success(function (result) {
         $scope.contacts = result;
+        $scope.contactAdd = {};
+        $scope.contactEdit = {};
     })
     .error(function (data) {
         console.log(data);
@@ -52,11 +54,13 @@ app.controller("contactsController", function ($scope, $http) {
         $scope.contactEdit.Birthdate = contact.Birthdate;
         $scope.contactEdit.Email = contact.Email;
         $scope.contactEdit.Address = contact.Address;
-        console.log("o caminhão de laranja passou por aqui? - Passou!" + contact.Name);
+        $scope.contactEdit.Id = contact.Id;
+        $scope.contactEdit.UserId = contact.UserId;
     }
 
     //metodo para editar contato
     $scope.EditContact = function (contact) {
+        contact.userId = 'ec5b8058-e848-46a9-b60e-3bff26c8e90d';
         $http.put('/api/contactapi/edit', contact)
         .success(function (result) {
             $scope.contacts = result;

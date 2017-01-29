@@ -3,7 +3,7 @@ var app = angular.module("agendaApp", []);
 
 //controller dos contatos
 app.controller("contactsController", function ($scope, $http) {
-
+    $scope.token = '';
     $http.get('/api/Contactapi/getbyuserid/' + $scope.UserId)
     .success(function (result) {
         $scope.contacts = result;
@@ -66,10 +66,11 @@ app.controller("loginController", function ($scope, $http) {
         $http.get('/api/userapi/VerifyUser/' + user.Login )
         .success(function (result) {
             $scope.statusVerify = result;
-            if (result == 'true') {
-                $http.post('/Token', { username: user.Login, password: user.Password })
+            if (result == true) {
+                $http.post('/Token', { username: user.Login, password: user.Password, @grant_type: password})
                 .success(function (result) {
-                    
+                    $scope.token = result.access_token;
+                    window.location.replace("/contact");
                 })
             }
             console.log(result);

@@ -11,7 +11,7 @@ namespace Agenda.Controllers
 {
     public class UserApiController : ApiController
     {
-        [HttpPost]
+        [HttpGet]
         public HttpResponseMessage VerifyUser(string login)
         {
             try

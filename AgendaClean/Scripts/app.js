@@ -38,17 +38,6 @@ app.controller("contactsController", function ($scope, $http) {
         });
     }
 
-    //metodo para remover contato
-    $scope.DeleteContact = function (contact) {
-        $http.put('/api/contactapi/delete', contact)
-        .success(function (result) {
-            $scope.contacts = result;
-        })
-        .error(function (data) {
-            console.log(data);
-        });
-    }
-
     $scope.InitEdit = function (contact) {
         $scope.contactEdit.Name = contact.Name;
         $scope.contactEdit.Phone = contact.Phone;
@@ -64,6 +53,26 @@ app.controller("contactsController", function ($scope, $http) {
         $http.put('/api/contactapi/edit', contact)
         .success(function (result) {
             $scope.contacts = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+    }
+});
+
+app.controller("loginController", function ($scope, $http) {
+
+    $scope.Login = function (user) {
+        $http.get('/api/userapi/VerifyUser/' + user.Login )
+        .success(function (result) {
+            $scope.statusVerify = result;
+            if (result == 'true') {
+                $http.post('/Token', { username: user.Login, password: user.Password })
+                .success(function (result) {
+                    
+                })
+            }
+            console.log(result);
         })
         .error(function (data) {
             console.log(data);

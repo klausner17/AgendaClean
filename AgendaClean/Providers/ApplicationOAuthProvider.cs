@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using AgendaClean.Models;
+using AgendaClean.Repository;
+using System.Web.Helpers;
 
 namespace Agenda.Providers
 {
@@ -18,14 +21,24 @@ namespace Agenda.Providers
 
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            if (context.UserName == "klausner" && context.Password == "123456")
+            
+            if (!string.IsNullOrEmpty(context.UserName) && !string.IsNullOrEmpty(context.Password))
             {
-                Claim claim1 = new Claim(ClaimTypes.Name, context.UserName);
-                Claim[] claims = new Claim[] { claim1 };
-                ClaimsIdentity claimsIdentity =
-                    new ClaimsIdentity(
-                       claims, OAuthDefaults.AuthenticationType);
-                context.Validated(claimsIdentity);
+                UserModel user = new UserModel()
+                {
+                    Login = context.UserName,
+                    Password = context.Password
+                };
+                var userRegistred = new UserRepository().FindAll().Where(m => m.Login == context.UserName);
+                if (userRegistred.Any() && Crypto.VerifyHashedPassword(userRegistred.FirstOrDefault().Password, context.Password))
+                {
+                    Claim claim1 = new Claim(ClaimTypes.Name, userRegistred.FirstOrDefault().Id);
+                    Claim[] claims = new Claim[] { claim1 };
+                    ClaimsIdentity claimsIdentity =
+                        new ClaimsIdentity(
+                           claims, OAuthDefaults.AuthenticationType);
+                    context.Validated(claimsIdentity);
+                }
             }
             return Task.FromResult<object>(null);
         }

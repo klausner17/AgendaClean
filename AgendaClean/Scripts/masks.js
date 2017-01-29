@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('input[name=phone]').mask('(99) 9999-9999');
+    $('input[name=phone]').mask('(99) 99999-9999');
 });
 
 $(document).ready(function () {

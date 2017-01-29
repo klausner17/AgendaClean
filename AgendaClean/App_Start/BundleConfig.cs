@@ -17,10 +17,10 @@ namespace AgendaClean
             bundles.Add(new ScriptBundle("~/bundles/login").Include(
                         "~/Scripts/login.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/contact").Include(
-                        "~/Scripts/contact.js"));
+            bundles.Add(new ScriptBundle("~/bundles/masks").Include(
+                        "~/Scripts/masks.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/makedinput").Include(
+            bundles.Add(new ScriptBundle("~/bundles/maskedinput").Include(
                        "~/Scripts/jquery.maskedinput.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(

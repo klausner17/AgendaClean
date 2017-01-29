@@ -3,7 +3,8 @@ var app = angular.module("agendaApp", []);
 
 //controller dos contatos
 app.controller("contactsController", function ($scope, $http) {
-    $http.get('/api/Contactapi/getbyuserid/ec5b8058-e848-46a9-b60e-3bff26c8e90d')
+
+    $http.get('/api/Contactapi/getbyuserid/' + $scope.UserId)
     .success(function (result) {
         $scope.contacts = result;
         $scope.contactAdd = {};
@@ -14,8 +15,8 @@ app.controller("contactsController", function ($scope, $http) {
     });
 
     //metodo add contato
-    $scope.AddContact = function (contact) {
-        contact.userId = 'ec5b8058-e848-46a9-b60e-3bff26c8e90d';
+    $scope.AddContact = function (contact, userId) {
+        contact.UserId = userId;
         $http.put('/api/contactapi/add', contact )
         .success(function (result) {
             $scope.contacts = result;
@@ -60,7 +61,6 @@ app.controller("contactsController", function ($scope, $http) {
 
     //metodo para editar contato
     $scope.EditContact = function (contact) {
-        contact.userId = 'ec5b8058-e848-46a9-b60e-3bff26c8e90d';
         $http.put('/api/contactapi/edit', contact)
         .success(function (result) {
             $scope.contacts = result;

@@ -5,7 +5,6 @@
 
 @Styles.Render("~/Content/contacts")
 
-
 <div ng-controller="contactsController">
 
     <!--Main view-->
@@ -42,7 +41,7 @@
                         </li>
                         <li>
                             <div class="navbar-form">
-                                <a href="" type="submit" class="btn btn-danger" role="button">sair</a>
+                                <a href="@Url.Action("CloseSession")" type="submit" class="btn btn-danger" role="button">sair</a>
                             </div>
                         </li>
                     </ul>
@@ -127,7 +126,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" ng-click="AddContact(contactAdd)" class="btn btn-success">salvar</a>
+                    <a href="#" data-dismiss="modal" ng-click="AddContact(contactAdd, @ViewBag.UserId)" class="btn btn-success">salvar</a>
                     <a href="#" class="btn btn-danger" data-dismiss="modal">cancelar</a>
                 </div>
             </div>
@@ -193,8 +192,8 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/makedinput")
-    @Scripts.Render("~/bundles/contact")
+    @Scripts.Render("~/bundles/maskedinput")
+    @Scripts.Render("~/bundles/masks")
 }
 
 

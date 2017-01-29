@@ -19,6 +19,7 @@ namespace AgendaClean.Controllers
         {
             if (Session["userLogged"] != null)
             {
+                ViewBag.UserId = (Session["userLogged"] as UserModel).Id;
                 return RedirectToAction(nameof(ContactController.Index), "Contact");
             }
             return View();
@@ -42,6 +43,7 @@ namespace AgendaClean.Controllers
             };
             _rep.Add(user);
             Session["userLogged"] = user;
+            ViewBag.UserId = user.Id;
             return RedirectToAction(nameof(ContactController.Index), "Contact");
             
         }
@@ -61,8 +63,8 @@ namespace AgendaClean.Controllers
                 if (Crypto.VerifyHashedPassword(userFound.Password, password))
                 {
                     Session["userLogged"] = userFound;
+                    ViewBag.UserId = userFound.Id;
                     return RedirectToAction(nameof(ContactController.Index), "Contact");
-
                 }
                 else
                 {

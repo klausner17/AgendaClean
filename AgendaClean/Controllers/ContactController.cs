@@ -16,6 +16,10 @@ namespace Agenda.Controllers
         public ActionResult Index()
         {
             var user = Session["userLogged"] as UserModel;
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
 

@@ -14,7 +14,7 @@ namespace Agenda.Controllers
     public class ContactApiController : ApiController
     {
         // GET api/<controller>/<action>/5
-        [HttpGet, Authorize]
+        [HttpGet]
         public HttpResponseMessage Get(string id)
         {
             try
@@ -30,7 +30,7 @@ namespace Agenda.Controllers
         }
 
         //GET api/<controller>/<action>/ec5b8058-e848-46a9-b60e-3bff26c8e90d
-        [HttpGet, Authorize]
+        [HttpGet]
         public HttpResponseMessage GetByUserId(string id)
         {
             try
@@ -46,7 +46,7 @@ namespace Agenda.Controllers
         }
         
         //PUT api/<controller>/<action>/produto
-        [HttpPut, Authorize]
+        [HttpPut]
         public HttpResponseMessage Add([FromBody]ContactModel contact)
         {
             try
@@ -62,7 +62,7 @@ namespace Agenda.Controllers
         }
 
         //PUT api/<controller>/<action>/produto
-        [HttpPut, Authorize]
+        [HttpPut]
         public HttpResponseMessage Edit([FromBody]ContactModel contact)
         {
             try
@@ -78,7 +78,7 @@ namespace Agenda.Controllers
         }
 
         // DELETE api/<controller>/<action>/5
-        [HttpPut, Authorize]
+        [HttpPut]
         public HttpResponseMessage Delete([FromBody]ContactModel contact)
         {
             try

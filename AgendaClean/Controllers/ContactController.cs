@@ -18,7 +18,7 @@ namespace Agenda.Controllers
             var user = Session["userLogged"] as UserModel;
             if (user == null)
                 return RedirectToAction("Login", "Login");
-            return View(_rep.FindAll().Where(m => m.UserId == user.Id));
+            return View(user);
         }
 
         public ActionResult CloseSession()

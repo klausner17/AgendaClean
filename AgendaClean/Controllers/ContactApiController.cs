@@ -53,7 +53,7 @@ namespace Agenda.Controllers
             {
                 var repContact = new ContactRepository();
                 repContact.Add(contact);
-                return Request.CreateResponse(HttpStatusCode.OK, repContact.FindAll());
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (NullReferenceException)
             {
@@ -69,7 +69,7 @@ namespace Agenda.Controllers
             {
                 var repContact = new ContactRepository();
                 repContact.Update(contact);
-                return Request.CreateResponse(HttpStatusCode.OK, repContact.FindAll());
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (NullReferenceException)
             {
@@ -85,7 +85,7 @@ namespace Agenda.Controllers
             {
                 var repContact = new ContactRepository();
                 repContact.Remove(repContact.Find(contact.Id));
-                return Request.CreateResponse(HttpStatusCode.OK, repContact.FindAll());
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (NullReferenceException)
             {

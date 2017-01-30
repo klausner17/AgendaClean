@@ -29,7 +29,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <div class="navbar-form">
-                                <a href="#" data-toggle="modal" data-target="#modalNewContact" class="btn btn-success" role="button">novo contato</a>
+                                <a href="#" data-toggle="modal" data-target="#modalNewContact" class="btn" style="background-color:seagreen; color:white" role="button">novo contato</a>
                             </div>
                         </li>
                         <li>
@@ -63,7 +63,7 @@
                     </td>
                     <td>
                         <a href="#" ng-click="DeleteContact(contact)">
-                            <span class="alert-danger glyphicon glyphicon-trash"></span>
+                            <span class="glyphicon glyphicon-trash" style="color:red"></span>
                         </a>
                     </td>
                 </tr>
@@ -76,7 +76,7 @@
     <div class="modal fade" id="modalNewContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="background-color:seagreen">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -98,7 +98,7 @@
                     <div class="form-group row">
                         <label for="birthdate" class="col-lg-2 col-form-label">Data de nasc.</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Birthdate" class="form-control" type="date" placeholder="nova data" name="birthdate">
+                            <input ng-model="contactAdd.Birthdate"  class="form-control" type="date" name="birthdate">
                         </div>
                     </div>
                     <div class="form-group row">

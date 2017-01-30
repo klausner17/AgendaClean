@@ -58,6 +58,7 @@ app.controller("contactsController", function ($scope, $http) {
         $http.put('/api/contactapi/edit', contact)
         .success(function (result) {
             $scope.getContacts();
+            delete $scope.contactEdit;
         })
         .error(function (data) {
             console.log(data);

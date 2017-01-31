@@ -49,13 +49,15 @@
             </div>
             <div class="panel-body">
                 <table class="table table-hover">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>E-mail</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>E-mail</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tr ng-repeat="contact in contacts">
                         <td>{{contact.Name}}</td>
                         <td>{{contact.Phone}}</td>

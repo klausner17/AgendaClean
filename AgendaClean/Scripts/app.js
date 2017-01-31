@@ -7,7 +7,6 @@ app.controller("contactsController", function ($scope, $http) {
     $scope.init = function (id) {
         $scope.UserId = id;
         $scope.contactAdd = {
-            Id: "",
             Name: "",
             Birthdate: "",
             Address: "",
@@ -15,7 +14,6 @@ app.controller("contactsController", function ($scope, $http) {
             Phone: ""
         };
         $scope.contactEdit = {
-            Id: "",
             Name: "",
             Birthdate: "",
             Address: "",
@@ -38,6 +36,7 @@ app.controller("contactsController", function ($scope, $http) {
         contact.UserId = $scope.UserId;
         $http.post('/api/contactapi/add', contact )
         .success(function (result) {
+            $('#modalNewContact').modal('hide');
             $scope.getContacts();
             delete $scope.contactAdd;
         })
@@ -47,8 +46,8 @@ app.controller("contactsController", function ($scope, $http) {
     }
 
     //metodo para remover contato
-    $scope.DeleteContact = function ( contact ) {
-        $http.delete('/api/contactapi/delete/' +  contact.Id)
+    $scope.DeleteContact = function ( id ) {
+        $http.delete('/api/contactapi/delete/' + id)
         .success(function (result) {
             $scope.getContacts();
         })
@@ -71,6 +70,7 @@ app.controller("contactsController", function ($scope, $http) {
     $scope.EditContact = function (contact) {
         $http.put('/api/contactapi/edit', contact)
         .success(function (result) {
+            $('#modalEditContact').modal('hide');
             $scope.getContacts();
             delete $scope.contactEdit;
         })

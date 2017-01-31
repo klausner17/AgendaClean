@@ -62,7 +62,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="#" ng-click="DeleteContact(contact)">
+                        <a href="#" ng-click="DeleteContact(contact.Id)">
                             <span class="glyphicon glyphicon-trash" style="color:red"></span>
                         </a>
                     </td>
@@ -86,7 +86,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-lg-2 col-form-label">Nome</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Name" class="form-control" type="text" placeholder="novo nome">
+                            <input ng-model="contactAdd.Name" class="form-control" type="text" placeholder="novo nome" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -98,7 +98,7 @@
                     <div class="form-group row">
                         <label for="birthdate" class="col-lg-2 col-form-label">Data de nasc.</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Birthdate" class="form-control" type="text" name="birthdate">
+                            <input ng-model="contactAdd.Birthdate" class="form-control" type="text" placeholder="nova data" name="birthdate">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" ng-click="AddContact(contactAdd)" class="btn btn-success">salvar</a>
+                    <button ng-disabled="!contactAdd.Name" ng-click="AddContact(contactAdd)" class="btn btn-success">salvar</button>
                     <a href="#" class="btn btn-danger" data-dismiss="modal">cancelar</a>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" ng-click="EditContact(contactEdit)" class="btn btn-success">salvar</a>
+                    <button ng-disabled="!contactEdit.Name" ng-click="EditContact(contactEdit)" class="btn btn-success">salvar</button>
                     <a href="#" class="btn btn-danger" data-dismiss="modal">cancelar</a>
                 </div>
             </div>

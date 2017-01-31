@@ -72,7 +72,6 @@ app.controller("contactsController", function ($scope, $http) {
         .success(function (result) {
             $('#modalEditContact').modal('hide');
             $scope.getContacts();
-            delete $scope.contactEdit;
         })
         .error(function (data) {
             console.log(data);

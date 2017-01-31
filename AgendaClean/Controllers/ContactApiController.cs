@@ -36,7 +36,7 @@ namespace Agenda.Controllers
             try
             {
                 var repUser = new UserRepository();
-                var contacts = repUser.Find(id).Contacts;
+                var contacts = repUser.Find(id).Contacts.OrderBy(m => m.Name);
                 return Request.CreateResponse(HttpStatusCode.OK, contacts);
             }
             catch (NullReferenceException)

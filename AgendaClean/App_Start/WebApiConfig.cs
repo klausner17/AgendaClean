@@ -14,11 +14,6 @@ namespace AgendaClean
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            //config.Routes.MapHttpRoute(
-            //        name: "GetByLogin",
-            //        routeTemplate: "api/{controller}/{action}/{login}"
-            //);
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",

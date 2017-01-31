@@ -15,7 +15,7 @@ namespace AgendaClean.Models
         public string Name { get; set; }
 
         [Display(Name = "Data de nascimento")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy")]
         public DateTime Birthdate { get; set; }
 
         [Display(Name = "E-mail")]

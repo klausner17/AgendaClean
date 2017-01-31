@@ -98,7 +98,7 @@
                     <div class="form-group row">
                         <label for="birthdate" class="col-lg-2 col-form-label">Data de nasc.</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactAdd.Birthdate"  class="form-control" type="date" name="birthdate">
+                            <input ng-model="contactAdd.Birthdate" class="form-control" type="text" name="birthdate">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -152,7 +152,7 @@
                     <div class="form-group row">
                         <label for="birthdate" class="col-lg-2 col-form-label">Data de nasc.</label>
                         <div class="col-lg-10">
-                            <input ng-model="contactEdit.Birthdate" class="form-control" type="date" placeholder="nova data" name="birthdate" />
+                            <input ng-model="contactEdit.Birthdate" class="form-control" type="text" placeholder="nova data" name="birthdate" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -186,7 +186,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/maskedinput")
-    @Scripts.Render("~/bundles/masks")
+    <script src="~/Scripts/masks.js"></script>
 }
 
 

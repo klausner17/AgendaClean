@@ -6,8 +6,22 @@ app.controller("contactsController", function ($scope, $http) {
 
     $scope.init = function (id) {
         $scope.UserId = id;
-        $scope.contactAdd = {};
-        $scope.contactEdit = {};
+        $scope.contactAdd = {
+            Id: "",
+            Name: "",
+            Birthdate: "",
+            Address: "",
+            Email: "",
+            Phone: ""
+        };
+        $scope.contactEdit = {
+            Id: "",
+            Name: "",
+            Birthdate: "",
+            Address: "",
+            Email: "",
+            Phone: ""
+        };
         $scope.getContacts();
     }
 
@@ -22,7 +36,7 @@ app.controller("contactsController", function ($scope, $http) {
     //metodo add contato
     $scope.AddContact = function (contact) {
         contact.UserId = $scope.UserId;
-        $http.put('/api/contactapi/add', contact )
+        $http.post('/api/contactapi/add', contact )
         .success(function (result) {
             $scope.getContacts();
             delete $scope.contactAdd;
@@ -34,7 +48,7 @@ app.controller("contactsController", function ($scope, $http) {
 
     //metodo para remover contato
     $scope.DeleteContact = function ( contact ) {
-        $http.put('/api/contactapi/delete', contact)
+        $http.delete('/api/contactapi/delete/' +  contact.Id)
         .success(function (result) {
             $scope.getContacts();
         })
@@ -64,8 +78,4 @@ app.controller("contactsController", function ($scope, $http) {
             console.log(data);
         });
     }
-});
-
-app.controller("loginController", function ($scope, $http) {
-
 });

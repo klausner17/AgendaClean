@@ -46,7 +46,7 @@ namespace Agenda.Controllers
         }
         
         //PUT api/<controller>/<action>/produto
-        [HttpPut]
+        [HttpPost]
         public HttpResponseMessage Add([FromBody]ContactModel contact)
         {
             try
@@ -78,13 +78,13 @@ namespace Agenda.Controllers
         }
 
         // DELETE api/<controller>/<action>/5
-        [HttpPut]
-        public HttpResponseMessage Delete([FromBody]ContactModel contact)
+        [HttpDelete]
+        public HttpResponseMessage Delete(string id)
         {
             try
             {
                 var repContact = new ContactRepository();
-                repContact.Remove(repContact.Find(contact.Id));
+                repContact.Remove(repContact.Find(id));
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (NullReferenceException)
